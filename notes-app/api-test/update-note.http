@@ -1,0 +1,8 @@
+PUT http://localhost:4000/api/notes/53
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Updated Note Title",
+  "content": "Updated note content"
+}

@@ -1,0 +1,8 @@
+POST http://localhost:4000/api/notes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "My First Note 2  ",
+  "content": "This is the content  2"
+}
