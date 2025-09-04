@@ -1,2 +1,2 @@
-DELETE http://localhost:4000/api/notes/55
+DELETE http://localhost:4000/api/notes/152
 Authorization: Bearer {{token}}

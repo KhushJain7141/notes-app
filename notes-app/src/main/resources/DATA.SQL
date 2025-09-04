@@ -8,5 +8,7 @@ WHERE NOT EXISTS (
        OR email = 'testuser@test.com'
 );
 
+DROP TABLE users;
+
 
 

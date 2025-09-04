@@ -1,4 +1,5 @@
 package com.namekart.notesapp.controller;
+import com.namekart.notesapp.DTO.AuthResponseDTO;
 import com.namekart.notesapp.DTO.LoginRequestDTO;
 import com.namekart.notesapp.DTO.LoginResponseDTO;
 import com.namekart.notesapp.DTO.RegisterRequestDTO;
@@ -54,13 +55,13 @@ public class AuthController {
 
     @Operation(summary = "To register a new user")
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequestDTO registerRequestDTO) {
-        try{
-            String respone= authService.register(registerRequestDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(respone);
-        }
-        catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    public ResponseEntity<AuthResponseDTO> register(@RequestBody RegisterRequestDTO registerRequestDTO) {
+        try {
+            String token = authService.register(registerRequestDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new AuthResponseDTO(token));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
 }
