@@ -1,6 +1,7 @@
 package com.namekart.notesapp.controller;
 
-import com.namekart.notesapp.model.Notes;
+import com.namekart.notesapp.DTO.NoteDTO;
+import com.namekart.notesapp.DTO.NoteRequestDTO;
 import com.namekart.notesapp.service.NotesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,26 +18,32 @@ public class NotesController {
         this.notesService = notesService;
     }
 
+    // CREATE
     @PostMapping
-    public ResponseEntity<Notes> createNote(@RequestBody Notes note) {
-        return ResponseEntity.ok(notesService.createNote(note));
+    public ResponseEntity<NoteDTO> createNote(@RequestBody NoteRequestDTO request) {
+        return ResponseEntity.ok(notesService.createNote(request));
     }
 
-    @GetMapping("/{noteId}")
-    public ResponseEntity<Notes> getNoteById(@PathVariable Long noteId) {
-        return ResponseEntity.ok(notesService.getNoteById(noteId));
-    }
-
+    // GET ALL
     @GetMapping
-    public ResponseEntity<List<Notes>> getAllNotes() {
+    public ResponseEntity<List<NoteDTO>> getAllNotes() {
         return ResponseEntity.ok(notesService.getAllNotes());
     }
 
-    @PutMapping("/{noteId}")
-    public ResponseEntity<Notes> updateNote(@PathVariable Long noteId, @RequestBody Notes updatedNote) {
-        return ResponseEntity.ok(notesService.updateNote(noteId, updatedNote));
+    // GET BY ID
+    @GetMapping("/{noteId}")
+    public ResponseEntity<NoteDTO> getNoteById(@PathVariable Long noteId) {
+        return ResponseEntity.ok(notesService.getNoteById(noteId));
     }
 
+    // UPDATE
+    @PutMapping("/{noteId}")
+    public ResponseEntity<NoteDTO> updateNote(@PathVariable Long noteId,
+                                              @RequestBody NoteRequestDTO request) {
+        return ResponseEntity.ok(notesService.updateNote(noteId, request));
+    }
+
+    // DELETE
     @DeleteMapping("/{noteId}")
     public ResponseEntity<String> deleteNote(@PathVariable Long noteId) {
         notesService.deleteNote(noteId);

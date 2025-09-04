@@ -3,6 +3,6 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "title": "My First Note 2  ",
-  "content": "This is the content  2"
+  "title": "Nischut321321 ",
+  "content": "This is the content312321  2"
 }
